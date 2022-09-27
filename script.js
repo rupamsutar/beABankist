@@ -153,6 +153,8 @@ displayMovement(account1.movements);
 
 //Challenge 1:
 
+/*
+
 checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
 
 function checkDogs(dogsJulia, dogsKate) {
@@ -173,3 +175,26 @@ function checkDogs(dogsJulia, dogsKate) {
     }
   })
 }
+
+*/
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const euroToUSD = 1.1;
+
+const movementsUSD = movements.map(function(mov) {
+  return mov * euroToUSD;
+})
+
+console.log(movements);
+console.log(movementsUSD);
+
+const movementsUSDArrow = movements.map(mov => mov * euroToUSD);
+console.log(movementsUSDArrow)
+
+const movementsX = movements.map((mov,i) => 
+  `Movement ${i + 1}: You ${mov > 0 ? "deposited" : "withdrawn"} ${Math.abs(mov)}`
+);
+
+console.log(movementsX);
+
