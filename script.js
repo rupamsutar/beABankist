@@ -1,5 +1,7 @@
 'use strict';
 
+/*
+
 // BANKIST APP
 
 // Data
@@ -87,7 +89,7 @@ const displayMovement = function(movements) {
 displayMovement(account1.movements);
 
 
-
+*/
 
 
 
@@ -138,12 +140,36 @@ displayMovement(account1.movements);
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+
+//Challenge 1:
+
+checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+
+function checkDogs(dogsJulia, dogsKate) {
+  const dogsJuliaCorrected = [...dogsJulia];
+  dogsJuliaCorrected.splice(0,1);
+  dogsJuliaCorrected.splice(-2);
+  console.log(dogsJuliaCorrected);
+
+  const dogs = dogsJuliaCorrected.concat(dogsKate);
+
+  console.log(dogs);
+
+  dogs.forEach(function(dog,i) {
+    if(dog >= 3) {
+      console.log(`Dog No ${i + 1} is an adult and is ${dog} years old !`);
+    } else {
+      console.log(`Dog No ${i + 1} is a puppy and is ${dog} years old !`);
+    }
+  })
+}
