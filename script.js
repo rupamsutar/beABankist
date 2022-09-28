@@ -1,7 +1,6 @@
 'use strict';
 
 
-/*
 // BANKIST APP
 
 // Data
@@ -66,46 +65,49 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //Start:
 
 const displayMovement = function(movements) {
-
   containerMovements.innerHTML = "";
-
   movements.forEach(function(mov, i) {
-
     const type = mov > 0 ? "deposit" : "withdrawal";
-
     const html = `
     <div class="movements__row">
       <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
-      <div class="movements__value">${mov}</div>
-    </div>
-    `
-
+      <div class="movements__value">${mov}€</div>
+    </div>`
     containerMovements.insertAdjacentHTML("afterbegin", html);
   });
 }
-
 displayMovement(account1.movements);
+
+
 
 const calcDisplayBalance = function(movements) {
   const balance = movements.reduce(((acc, cur) => acc + cur),0);
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `${balance}€`;
 }
-
 calcDisplayBalance(account1.movements);
 
 
 
 const createUserName = function(accs) {
-
   accs.forEach(function (acc) {
     acc.userName = acc.owner.toLowerCase().split(" ").map(name => name[0]).join("");
   });
 }
-
 createUserName(accounts);
 
 
-*/
+const CalcDisplaySummary = function(movements) {
+  const income = movements.filter(mov => mov > 0).reduce((acc, cur) => acc + cur, 0);
+  labelSumIn.textContent = `${income}€`;
+  const outgone = movements.filter(mov => mov < 0).reduce((acc, cur) => acc + cur, 0);
+  labelSumOut.textContent = `${Math.abs(outgone)}€`;
+  const interest = movements.filter(mov => mov > 0).map(mov => mov * 1.2/100).filter((mov,i,arr) => mov >= 1).reduce((acc, cur) => acc + cur, 0);
+  labelSumInterest.textContent = `${interest}€`;
+}
+CalcDisplaySummary(account1.movements);
+
+
+
 
 
 
@@ -259,7 +261,7 @@ const maximumValue = movements.reduce((acc, mov) => {
 
 console.log(maximumValue);
 
-*/
+
 
 //Coding Challenge 2:
 
@@ -279,3 +281,14 @@ const calcAverageHumanAge = function(ages) {
 }
 
 calcAverageHumanAge([5,2,4,1,15,8,3]);
+
+
+
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const euroToUSD = 1.1;
+const totalDepositsUSD = movements.filter(mov => mov > 0).map(mov => mov * euroToUSD).reduce((acc, cur) => acc + cur,0);
+console.log(totalDepositsUSD);
+
+*/
