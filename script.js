@@ -243,7 +243,7 @@ const balance = movements.reduce(function(acc, cur, i, arr) {
 console.log(balance);
 
 
-*/
+
 
 // Practicing the Reduce with examples:
 
@@ -259,3 +259,23 @@ const maximumValue = movements.reduce((acc, mov) => {
 
 console.log(maximumValue);
 
+*/
+
+//Coding Challenge 2:
+
+const calcAverageHumanAge = function(ages) {
+  const humanAges = ages.map(age => age <= 2 ? 2 * age : 16 + age * 4);
+  
+  console.log(humanAges);
+  const adultAges = humanAges.filter(function(age) {
+    return age >= 18;
+  });
+
+  console.log(adultAges);
+
+  const average = adultAges.reduce(function(acc, cur,) {return ((acc + cur));},0) / (adultAges.length);
+
+  console.log(average);
+}
+
+calcAverageHumanAge([5,2,4,1,15,8,3]);
