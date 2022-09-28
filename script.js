@@ -1,7 +1,7 @@
 'use strict';
 
 
-
+/*
 // BANKIST APP
 
 // Data
@@ -105,7 +105,7 @@ const createUserName = function(accs) {
 createUserName(accounts);
 
 
-
+*/
 
 
 
@@ -244,3 +244,18 @@ console.log(balance);
 
 
 */
+
+// Practicing the Reduce with examples:
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const maximumValue = movements.reduce((acc, mov) => {
+  if(acc >= mov) {
+    return acc;
+  } else {
+    return acc = mov;
+  }
+}, movements[0]);
+
+console.log(maximumValue);
+
