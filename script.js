@@ -1,6 +1,6 @@
 'use strict';
 
-/*
+
 // BANKIST APP
 
 // Data
@@ -63,7 +63,7 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 
 //Start:
-
+//Function Display Movement
 const displayMovement = function(movements) {
   containerMovements.innerHTML = "";
   movements.forEach(function(mov, i) {
@@ -76,18 +76,15 @@ const displayMovement = function(movements) {
     containerMovements.insertAdjacentHTML("afterbegin", html);
   });
 }
-displayMovement(account1.movements);
 
-
-
+// Function Display Balance: 
 const calcDisplayBalance = function(movements) {
   const balance = movements.reduce(((acc, cur) => acc + cur),0);
   labelBalance.textContent = `${balance}€`;
 }
-calcDisplayBalance(account1.movements);
 
 
-
+//Function Create UserName:
 const createUserName = function(accs) {
   accs.forEach(function (acc) {
     acc.userName = acc.owner.toLowerCase().split(" ").map(name => name[0]).join("");
@@ -95,20 +92,50 @@ const createUserName = function(accs) {
 }
 createUserName(accounts);
 
-
-const CalcDisplaySummary = function(movements) {
-  const income = movements.filter(mov => mov > 0).reduce((acc, cur) => acc + cur, 0);
+//Function Display Summary:
+const CalcDisplaySummary = function(acc) {
+  const income = acc.movements.filter(mov => mov > 0).reduce((acc, cur) => acc + cur, 0);
   labelSumIn.textContent = `${income}€`;
-  const outgone = movements.filter(mov => mov < 0).reduce((acc, cur) => acc + cur, 0);
+  const outgone = acc.movements.filter(mov => mov < 0).reduce((acc, cur) => acc + cur, 0);
   labelSumOut.textContent = `${Math.abs(outgone)}€`;
-  const interest = movements.filter(mov => mov > 0).map(mov => mov * 1.2/100).filter((mov,i,arr) => mov >= 1).reduce((acc, cur) => acc + cur, 0);
+  const interest = acc.movements.filter(mov => mov > 0).map(mov => mov * acc.interestRate/100).filter((mov,i,arr) => mov >= 1).reduce((acc, cur) => acc + cur, 0);
   labelSumInterest.textContent = `${interest}€`;
 }
-CalcDisplaySummary(account1.movements);
 
 
+//Implementing Login
+//Adding Event Handlers:
 
-*/
+let currentAccount;
+
+btnLogin.addEventListener("click", function(e) {
+  //Prevent Form From Submitting:
+  e.preventDefault();
+
+  currentAccount = accounts.find(acc => acc.userName === inputLoginUsername.value);
+  console.log(currentAccount);
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    // Display UI and Message:
+    labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(" ")[0]}`;
+    containerApp.style.opacity = 100;
+
+    //Clear Input Fields
+    inputLoginUsername.value = inputLoginPin.value = "";
+    inputLoginPin.blur();
+
+    // Display movements:
+    displayMovement(currentAccount.movements);
+    // Display balance:
+    calcDisplayBalance(currentAccount.movements);
+    // Display summary:
+    CalcDisplaySummary(currentAccount);
+    console.log("LOGIN");
+  } else {
+    console.log("TRY AGAIN !");
+  }
+});
+
 
 
 
@@ -309,7 +336,7 @@ const euroToUSD = 1.1;
 const totalDepositsUSD = movements.filter(mov => mov > 0).map(mov => mov * euroToUSD).reduce((acc, cur) => acc + cur,0);
 console.log(totalDepositsUSD);
 
-*/
+
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -349,3 +376,5 @@ const accounts = [account1, account2, account3, account4];
 const account = accounts.find(acc => acc.owner === "Jessica Davis");
 
 console.log(account);
+
+*/
