@@ -1,6 +1,8 @@
 'use strict';
 
 
+/*
+
 // BANKIST APP
 
 // Data
@@ -177,6 +179,10 @@ btnClose.addEventListener("click", function(e) {
   }
   inputClosePin.value = inputCloseUsername.value = ""; 
 });
+
+*/
+
+
 
 
 
@@ -418,3 +424,14 @@ const account = accounts.find(acc => acc.owner === "Jessica Davis");
 console.log(account);
 
 */
+
+const movements = [200, -200, 340, -300, -20, 50, 400, -460];
+
+console.log(movements.includes(-200))
+
+
+const anyDeposit = movements.some(function(mov) {
+  return mov = 0;
+});
+
+console.log(anyDeposit)
