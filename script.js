@@ -1,7 +1,7 @@
 'use strict';
 
 
-/*
+
 
 // BANKIST APP
 
@@ -163,6 +163,19 @@ btnTransfer.addEventListener("click", function(e) {
   }
 });
 
+btnLoan.addEventListener("click", function(e) {
+  e.preventDefault();
+  const amount = Number(inputLoanAmount.value);
+
+  if(amount > 0 && currentAccount.movements.some(mov => mov >= amount*0.1)) {
+    // add a movement:
+    currentAccount.movements.push(amount);
+
+    //update UI:
+    updateUI(currentAccount);
+  }
+})
+
 btnClose.addEventListener("click", function(e) {
   e.preventDefault();
 
@@ -180,7 +193,7 @@ btnClose.addEventListener("click", function(e) {
   inputClosePin.value = inputCloseUsername.value = ""; 
 });
 
-*/
+
 
 
 
@@ -423,7 +436,10 @@ const account = accounts.find(acc => acc.owner === "Jessica Davis");
 
 console.log(account);
 
-*/
+
+
+
+
 
 const movements = [200, -200, 340, -300, -20, 50, 400, -460];
 
@@ -435,3 +451,5 @@ const anyDeposit = movements.some(function(mov) {
 });
 
 console.log(anyDeposit)
+
+*/
