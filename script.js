@@ -1,7 +1,7 @@
 'use strict';
 
 
-/*
+
 
 // BANKIST APP
 
@@ -66,9 +66,13 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 //Start:
 //Function Display Movement
-const displayMovement = function(movements) {
+const displayMovement = function(movements, sort = false) {
+
   containerMovements.innerHTML = "";
-  movements.forEach(function(mov, i) {
+
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach(function(mov, i) {
     const type = mov > 0 ? "deposit" : "withdrawal";
     const html = `
     <div class="movements__row">
@@ -193,8 +197,20 @@ btnClose.addEventListener("click", function(e) {
   inputClosePin.value = inputCloseUsername.value = ""; 
 });
 
+//Sort button 
+let sorted = false;
+btnSort.addEventListener("click", function(e) {
+  e.preventDefault();
 
-*/
+  displayMovement(currentAccount.movements, !sorted);
+  sorted = !sorted;
+})
+
+
+
+
+
+
 
 
 
@@ -500,7 +516,7 @@ const overAllBalance = accounts
 
 console.log(overAllBalance);
 
-*/
+
 
 // Sorting:
 
@@ -522,3 +538,12 @@ console.log(movements.sort(function(a, b) {
   if (b > a) return -1;
 }));
 console.log(movements);
+
+
+
+const movements = [200, 450, -400, 3000, -6500, -130, 70, 1300];
+
+console.log(movements.splice(0,3));
+console.log(movements);
+
+*/
