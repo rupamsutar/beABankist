@@ -452,7 +452,7 @@ const anyDeposit = movements.some(function(mov) {
 
 console.log(anyDeposit)
 
-*/
+
 
 const arr = [[1, 2, 3], 4, 5, 6, 7, 8, [9, 10]];
 
@@ -497,5 +497,28 @@ const overAllBalance = accounts
   .flat()
   .reduce((acc, mov) => acc + mov, 0);
 
-  
+
 console.log(overAllBalance);
+
+*/
+
+// Sorting:
+
+//Strings
+const owners = ["Rupam", "Pranali", "Digamber", "Sanchayati", "Abhinandan"];
+
+console.log(owners.sort());
+console.log(owners);
+
+//Numbers:
+
+const movements = [200, 450, -400, 3000, -6500, -130, 70, 1300];
+console.log(movements);
+
+// return < 0 : Keep Order a, b
+//return > 0 : switch order b, a
+console.log(movements.sort(function(a, b) {
+  if (a > b) return 1;
+  if (b > a) return -1;
+}));
+console.log(movements);
